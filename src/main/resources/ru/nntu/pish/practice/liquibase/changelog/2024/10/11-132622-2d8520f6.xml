@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="PISH_Practice">
+        <createTable tableName="INSTITUTE">
+            <column name="id" remarks="Institute identifier" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_INSTITUTE"/>
+            </column>
+            <column name="name" remarks="Institute full name" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="abbreviation" remarks="Institute name abbreviation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="university_id" remarks="Foreign key reffering to the Universaty" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="PISH_Practice">
+        <createTable remarks="Dictionary table for all universities in system." tableName="university">
+            <column name="id" remarks="University identifier" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UNIVERSITY"/>
+            </column>
+            <column name="name" remarks="University full name" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="abbreviation" remarks="Abbreviation of university name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="PISH_Practice">
+        <createIndex indexName="IDX_INSTITUTE_UNIVERSITY" tableName="INSTITUTE">
+            <column name="university_id"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="university_id" baseTableName="INSTITUTE"
+                                 constraintName="FK_INSTITUTE_ON_UNIVERSITY" referencedColumnNames="id"
+                                 referencedTableName="university"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,42 @@
+jmix:
+  core:
+    available-locales: en
+
+  ui:
+    composite-menu: true
+    login-view-id: LoginView
+    main-view-id: MainView
+    menu-config: ru/nntu/pish/practice/menu.xml
+
+logging:
+  level:
+    eclipselink:
+      logging:
+        sql: info
+
+    io:
+      jmix: info
+      jmix.core.AccessLogger: debug
+    org:
+      atmosphere: warn
+
+main:
+  datasource:
+    url: jdbc:postgresql://localhost/pish_practice
+    username: postgres
+    password: postgres
+
+  liquibase:
+    change-log: ru/nntu/pish/practice/liquibase/changelog.xml
+
+server:
+  port: 8081
+
+ui:
+  login:
+    defaultPassword: admin
+    defaultUsername: admin
+vaadin:
+  launch-browser: false
+  pnpm:
+    enable: true
