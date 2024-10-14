@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="PISH_Practice">
+        <createTable remarks="Company information" tableName="company">
+            <column name="id" remarks="Company identifier" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_COMPANY"/>
+            </column>
+            <column name="name" remarks="Company name" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="legal_name" remarks="Company full legal name" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" remarks="Company description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="PISH_Practice">
+        <createTable remarks="Department is subdivision of the institute" tableName="department">
+            <column name="id" remarks="Department identifier" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DEPARTMENT"/>
+            </column>
+            <column name="name" remarks="Department full name" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="abbreviation" remarks="Department abbreviation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="institute_id" remarks="Foreign key reffering to the Institute" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="PISH_Practice">
+        <createTable remarks="Study direction abbreviation" tableName="study_direction">
+            <column name="id" remarks="Study direction identifier" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_STUDY_DIRECTION"/>
+            </column>
+            <column name="name" remarks="Sutdy direction full name" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="abbreviation" remarks="Study direction abbreviation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" remarks="Study direction code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="PISH_Practice">
+        <createIndex indexName="IDX_DEPARTMENT_INSTITUTE" tableName="department">
+            <column name="institute_id"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="institute_id" baseTableName="department"
+                                 constraintName="FK_DEPARTMENT_ON_INSTITUTE" referencedColumnNames="id"
+                                 referencedTableName="INSTITUTE"/>
+    </changeSet>
+    <changeSet id="5" author="PISH_Practice">
+        <setColumnRemarks columnDataType="uuid" columnName="ID" remarks="User identifier" tableName="USER_"/>
+    </changeSet>
+</databaseChangeLog>
