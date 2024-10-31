@@ -1,4 +1,4 @@
-package ru.nntu.pish.practice.entity;
+package ru.nntu.pish.practice.entity.user;
 
 import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;

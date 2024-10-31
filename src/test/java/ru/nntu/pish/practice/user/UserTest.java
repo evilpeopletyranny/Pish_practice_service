@@ -1,6 +1,6 @@
 package ru.nntu.pish.practice.user;
 
-import ru.nntu.pish.practice.entity.User;
+import ru.nntu.pish.practice.entity.user.User;
 import ru.nntu.pish.practice.test_support.AuthenticatedAsAdmin;
 import io.jmix.core.DataManager;
 import io.jmix.core.security.UserRepository;

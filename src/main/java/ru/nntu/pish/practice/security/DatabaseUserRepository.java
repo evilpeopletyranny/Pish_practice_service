@@ -1,6 +1,6 @@
 package ru.nntu.pish.practice.security;
 
-import ru.nntu.pish.practice.entity.User;
+import ru.nntu.pish.practice.entity.user.User;
 import io.jmix.securitydata.user.AbstractDatabaseUserRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
