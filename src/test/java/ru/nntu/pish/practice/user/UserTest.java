@@ -51,7 +51,7 @@ public class UserTest {
 
     @AfterEach
     void tearDown() {
-        if (savedUser != University)
+        if (savedUser != null)
             dataManager.remove(savedUser);
     }
 }
